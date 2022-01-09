@@ -1,17 +1,31 @@
 {
-  "name": "confusionserver2",
+  "name": "node-mongo",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node index"
   },
+  
   "dependencies": {
+    "assert": "^1.4.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.16.0",
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
+    "mongodb": "^3.0.10",
     "morgan": "~1.9.0"
-    
-  }
+  },
+  "description": "Node MongoDB Example",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/payal2503/NodeJs-confusion.git"
+  },
+  "author": "Payal singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/payal2503/NodeJs-confusion/issues"
+  },
+  "homepage": "https://github.com/payal2503/NodeJs-confusion#readme"
 }
