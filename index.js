@@ -1,5 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
+const dboper = require('./operations');
 
 const url = 'mongodb://localhost:27017/';
 const dbname = 'conFusion';
@@ -12,27 +13,31 @@ MongoClient.connect(url, (err, client) => {
 
     const db = client.db(dbname);
     const collection = db.collection("dishes");
-    collection.insertOne({"name": "Uthappizza1", "description": "test1"},
-    (err, result) => {
-        assert.equal(err,null);
+    dboper.insertDocument(db, { name: "Vadonut", description: "Test"},
+        "dishes", (result) => {
+            console.log("Insert Document:\n", result.ops); //The OPS tells you the number of insert operations that were carried out. So this is another object that is going to be on the result 
 
-        console.log("After Insert:\n");
-        console.log(result.ops);
+            dboper.findDocuments(db, "dishes", (docs) => {
+                console.log("Found Documents:\n", docs);
 
-        collection.find({}).toArray((err, docs) => {
-            assert.equal(err,null);
-            
-            console.log("Found:\n");
-            console.log(docs); //you can specify a filter heresaying name is equalTo an value..
+                dboper.updateDocument(db, { name: "Vadonut" },
+                    { description: "Updated Test" }, "dishes",
+                    (result) => {
+                        console.log("Updated Document:\n", result.result);
 
-            db.dropCollection("dishes", (err, result) => { //It will drop the specify collection(dishse) //Remove the dishes collection from my DB
-                assert.equal(err,null);
+                        dboper.findDocuments(db, "dishes", (docs) => {
+                            console.log("Found Updated Documents:\n", docs);
+                            
+                            db.dropCollection("dishes", (result) => {
+                                console.log("Dropped Collection: ", result);
 
-                client.close();
+                                client.close();
+                            });
+                        });
+                    });
             });
-        });
     });
+    
 
+// "start": "node ./bin/www" 
 });
-
-// "start": "node ./bin/www"
