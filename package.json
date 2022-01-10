@@ -1,0 +1,40 @@
+{
+  "name": "node-mongooes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "async": "^2.6.1",
+    "bluebird": "^3.5.0",
+    "bson": "^1.0.9",
+    "debug": "^2.6.9",
+    "kareem": "^2.2.1",
+    "lodash": "^4.17.21",
+    "lodash.get": "^4.4.2",
+    "mongodb": "^3.0.10",
+    "mongodb-core": "^3.0.9",
+    "mongoose": "^5.1.7",
+    "mongoose-legacy-pluralize": "^1.0.2",
+    "mpath": "^0.4.1",
+    "mquery": "^3.0.0",
+    "ms": "^2.0.0",
+    "regexp-clone": "^0.0.1",
+    "require_optional": "^1.0.1",
+    "resolve-from": "^2.0.0",
+    "semver": "^5.7.1",
+    "sliced": "^1.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/payal2503/NodeJs-confusion.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/payal2503/NodeJs-confusion/issues"
+  },
+  "homepage": "https://github.com/payal2503/NodeJs-confusion#readme"
+}
