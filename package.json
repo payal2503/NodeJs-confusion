@@ -3,9 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node index"
+    "start": "node ./bin/www"
   },
-  
   "dependencies": {
     "assert": "^1.4.1",
     "cookie-parser": "~1.4.3",
@@ -14,6 +13,8 @@
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
     "mongodb": "^3.0.10",
+    "mongoose": "^4.13.7",
+    "mongoose-currency": "^0.2.0",
     "morgan": "~1.9.0"
   },
   "description": "Node MongoDB Example",
