@@ -57,7 +57,7 @@ const dishSchema = new Schema({
     comments:[commentSchema]
 }, {
     timestamps: true,
-    usePushEach: true
+     usePushEach: true
 });
 
 
