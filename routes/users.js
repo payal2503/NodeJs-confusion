@@ -23,12 +23,12 @@ router.get('/', function(req, res, next) {
         res.json({err: err});
       }
       else {
-        if(req.body.firstname)
-        user.firstname = req.body.firstname ;
-        if(req.body.alstname) 
-        user.lastname = req.body.lastname ;
+        if (req.body.firstname)
+          user.firstname = req.body.firstname;
+        if (req.body.lastname)
+          user.lastname = req.body.lastname;
         user.save((err, user) => {
-          if(err) {
+          if (err) {
             res.statusCode = 500;
             res.setHeader('Content-Type', 'application/json');
             res.json({err: err});
@@ -37,13 +37,13 @@ router.get('/', function(req, res, next) {
           passport.authenticate('local')(req, res, () => {
             res.statusCode = 200;
             res.setHeader('Content-Type', 'application/json');
-            res.json({success : true, status : ' Registration Successful! '});
-          });       
+            res.json({success: true, status: 'Registration Successful!'});
+          });
         });
       }
     });
   });
-
+  
   // 61e398a1cdf40b0a407c4c94
   // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWUzOTY4ZGNkZjQwYjBhNDA3YzRjOTMiLCJpYXQiOjE2NDIzMDUxOTQsImV4cCI6MTY0MjMwODc5NH0.x-YZOPgchUCJ2IALvSqXGoIUHdb2fe8PNUbhqAZ5Qns
   router.post('/login', passport.authenticate('local'), (req, res) => {
