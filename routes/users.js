@@ -8,8 +8,8 @@ var router = express.Router();
 router.use(bodyParser.json());
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+router.get('/', authenticate.verifyUser, authenticate.verifyAdmin ,(req, res, next) => {
+  res.send('You are not authorized to perform this operation!');
 });
 
 // router.post('/signup', function(req, res, next) {
@@ -44,12 +44,12 @@ router.get('/', function(req, res, next) {
     });
   });
   
-  // 61e398a1cdf40b0a407c4c94
-  // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWUzOTY4ZGNkZjQwYjBhNDA3YzRjOTMiLCJpYXQiOjE2NDIzMDUxOTQsImV4cCI6MTY0MjMwODc5NH0.x-YZOPgchUCJ2IALvSqXGoIUHdb2fe8PNUbhqAZ5Qns
   router.post('/login', passport.authenticate('local'), (req, res) => {
+    console.log(req.user._id);
 
     var token = authenticate.getToken({_id: req.user._id});
     res.statusCode = 200;
+    console.log(req.user._id);
     res.setHeader('Content-Type', 'application/json');
     res.json({success : true, token: token , status : ' You are successfully logged in! '});
   });
@@ -68,3 +68,62 @@ router.get('/logout', (req , res) => {
 });
 
 module.exports = router;
+
+
+
+// var router = express.Router();
+
+// var Verify = require('./verify');
+
+// /* GET users listing. */
+// router.get('/', function(req, res, next) {
+//   res.send('respond with a resource');
+// });
+
+// router.post('/register', function(req, res) {
+//     User.register(new User({ username : req.body.username }),
+//       req.body.password, function(err, user) {
+//         if (err) {
+//             return res.status(500).json({err: err});
+//         }
+//         passport.authenticate('local')(req, res, function () {
+//             return res.status(200).json({status: 'Registration Successful!'});
+//         });
+//     });
+// });
+
+// router.post('/login', function(req, res, next) {
+//   passport.authenticate('local', function(err, user, info) {
+//     if (err) {
+//       return next(err);
+//     }
+//     if (!user) {
+//       return res.status(401).json({
+//         err: info
+//       });
+//     }
+//     req.logIn(user, function(err) {
+//       if (err) {
+//         return res.status(500).json({
+//           err: 'Could not log in user'
+//         });
+//       }
+        
+//       var token = Verify.getToken(user);
+//               res.status(200).json({
+//         status: 'Login successful!',
+//         success: true,
+//         token: token
+//       });
+//     });
+//   })(req,res,next);
+// });
+
+// router.get('/logout', function(req, res) {
+//     req.logout();
+//   res.status(200).json({
+//     status: 'Bye!'
+//   });
+// });
+
+// module.exports = router;
