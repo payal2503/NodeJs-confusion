@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
- 
+
 const leaderSchema = new Schema({
     name:{
         type: String,
@@ -20,17 +20,16 @@ const leaderSchema = new Schema({
         required: true
     },
     description:{
-        required: true,
-        type: String
+        type: String,
+        required: true
     },
     featured:{
         type: Boolean,
         required: true,
         default: false
     }
-},{
-    Timestamps: true
-});
+})
 
-var Leaders = mongoose.model('Leaders', leaderSchema);
-module.exports = Leaders ;
+var Leaders = mongoose.model('Leader',leaderSchema);
+
+module.exports = Leaders;

@@ -1,39 +1,28 @@
 {
-  "name": "node-mongo",
+  "name": "confusionserver",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "assert": "^1.4.1",
-    "cookie-parser": "~1.4.3",
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.3",
     "debug": "~2.6.9",
     "express": "~4.16.0",
-    "express-session": "^1.15.6",
+    "express-session": "^1.17.1",
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
     "jsonwebtoken": "^8.5.1",
-    "mongodb": "^3.0.10",
-    "mongoose": "^4.13.7",
+    "mongoose": "^5.9.18",
     "mongoose-currency": "^0.2.0",
     "morgan": "~1.9.0",
-    "passport": "^0.4.0",
+    "multer": "^1.4.2",
+    "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^5.0.1",
-    "session-file-store": "^1.2.0"
-  },
-  "description": "Node MongoDB Example",
-  "main": "app.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/payal2503/NodeJs-confusion.git"
-  },
-  "author": "Payal singh",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/payal2503/NodeJs-confusion/issues"
-  },
-  "homepage": "https://github.com/payal2503/NodeJs-confusion#readme"
+    "passport-local-mongoose": "^6.0.1",
+    "session-file-store": "^1.4.0"
+  }
 }
