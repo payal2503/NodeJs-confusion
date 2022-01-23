@@ -61,3 +61,11 @@ const dishSchema = new Schema({
 var Dishes = mongoose.model('Dish',dishSchema);
 
 module.exports= Dishes;
+
+// {"name":"utthappizaa",
+// "image":"uthappizza",
+// "category":"main",
+// "label":"hot",
+// "price":"4.9",
+// "featured":"true",
+// "description":"okay"}
