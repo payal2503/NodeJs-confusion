@@ -11,18 +11,19 @@ const dishRouter = express.Router();
 dishRouter.use(bodyParser.json());
 
 dishRouter.route('/')
-.options(cors.corsWithOptions, (req, res) => { res.statusCode(200); })
-.get(cors.cors, (req,res,next) => {
-    Dishes.find({})
-    .populate('comments.author')
+.options(cors.corsWithOptions, (req,res)=>{res.sendStatus(200); })
+.get(cors.cors,(req,res,next) => {
+    Dishes.find({})    
+    .populate('comments.auther')
     .then((dishes) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
-        res.json(dishes);
+        res.json(dishes);       
     }, (err) => next(err))
     .catch((err) => next(err));
 })
-.post(cors.corsWithOptions, authenticate.verifyUser,authenticate.verifyAdmin,(req, res, next) => {
+
+.post(authenticate.verifyUser,(req, res, next) => {
     Dishes.create(req.body)
     .then((dish) => {
         console.log('Dish Created ', dish);
@@ -32,6 +33,7 @@ dishRouter.route('/')
     }, (err) => next(err))
     .catch((err) => next(err));
 })
+
 .put(cors.corsWithOptions, authenticate.verifyUser,authenticate.verifyAdmin,(req, res, next) => {
     res.statusCode = 403;
     res.end('PUT operation not supported on /dishes');

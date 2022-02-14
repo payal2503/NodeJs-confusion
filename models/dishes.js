@@ -1,71 +1,66 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const Schema= mongoose.Schema;
 require('mongoose-currency').loadType(mongoose);
-const Currency =mongoose.Types.Currency;
+const Currency = mongoose.Types.Currency;
 
-const commentSchema = new Schema({
-    rating:{
+var commentSchema = new Schema({
+    rating:  {
         type: Number,
-        min:1,
-        max:5,
+        min: 1,
+        max: 5,
         required: true
     },
-    comment:{
+    comment:  {
         type: String,
-        required: true,
+        required: true
     },
-    author:{
-        type: mongoose.Schema.Types.ObjectId ,
+    author: {
+        type: String,
+        // type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }
-},{
+}, {
     timestamps: true
-})
+});
 
 const dishSchema = new Schema({
-    name:{
+    name: {
         type: String,
         required: true,
-        unique: true,
+        unique: true
     },
-    description:{
+    description: {
         type: String,
         required: true
     },
-    image:{
+    image: {
         type: String,
         required: true
     },
-    category:{
+    category: {
         type: String,
         required: true
     },
-    label:{
+    label: {
         type: String,
         default: ''
     },
-    price:{
+    price: {
         type: Currency,
         required: true,
         min: 0
     },
-    featured:{
+    featured: {
         type: Boolean,
-        default: false
+        default:false      
     },
-    comments: [commentSchema]
-},{
-    timestamps : true
+    comments:[commentSchema]
+}, {
+    timestamps: true,
+     usePushEach: true
 });
 
-var Dishes = mongoose.model('Dish',dishSchema);
+var Dishse = mongoose.model('Dish', dishSchema);
 
-module.exports= Dishes;
+module.exports = Dishse;
 
-// {"name":"utthappizaa",
-// "image":"uthappizza",
-// "category":"main",
-// "label":"hot",
-// "price":"4.9",
-// "featured":"true",
-// "description":"okay"}
